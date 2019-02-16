@@ -15,8 +15,8 @@ import frc.robot.Robot;
  */
 public class squishyaxis extends Command {
   public squishyaxis() {
-    // Use requires() here to declare subsystem dependencies
-    requires(Robot.one);
+    // Use requiresS() here to declare subsystem dependencies
+    requires(Robot.squishy);
   }
 
   // Called just before this Command runs the first time

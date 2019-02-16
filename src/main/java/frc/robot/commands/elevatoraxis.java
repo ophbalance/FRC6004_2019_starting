@@ -16,7 +16,7 @@ import frc.robot.Robot;
 public class elevatoraxis extends Command {
   public elevatoraxis() {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.one);
+    requires(Robot.elevator);
   }
 
   // Called just before this Command runs the first time
@@ -27,7 +27,7 @@ public class elevatoraxis extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.one.elevatoraxis();
+    Robot.elevator.elevatoraxis();
   }
 
   // Make this return true when this Command no longer needs to run execute()

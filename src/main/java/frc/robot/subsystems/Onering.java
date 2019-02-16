@@ -20,7 +20,6 @@ public class Onering extends Subsystem {
     VictorSP climbBack = new VictorSP(1);
 
     VictorSP climbDrive = new VictorSP(2);
-    VictorSP elevatorDrive = new VictorSP(3);
 
   @Override
   public void initDefaultCommand() {
@@ -50,8 +49,5 @@ public class Onering extends Subsystem {
       climbDrive.set(-.35);
     }
 
-    public void elevatoraxis() {
-      // Update motor speed to passed in value
-      elevatorDrive.set(-Robot.m_oi._game2.getRawAxis(5));
-    }
+    
 }
