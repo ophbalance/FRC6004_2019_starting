@@ -10,6 +10,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.VictorSP;
 import frc.robot.Robot;
+import frc.robot.commands.climbaxispowers;
 /**
  * An example subsystem.  You can replace me with your own Subsystem.
  */
@@ -23,30 +24,38 @@ public class Onering extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
+    
+    setDefaultCommand(new climbaxispowers());
+  }
+  
+  public void fourthreich() {
+    climbFront.set(Robot.m_oi._game2.getRawAxis(1));
+    climbBack.set(Robot.m_oi._game2.getRawAxis(1)*.675);
+  }
+  public void climbup(double steve) {
+    // Update motor speed to passed in value
+    climbFront.set(steve);
   }
 
-  public void climbup() {
+  public void climbdown(double steve) {
     // Update motor speed to passed in value
-    climbFront.set(.20);
-    climbBack.set(.20*.75);
-  }
-
-  public void climbdown() {
-    // Update motor speed to passed in value
-    climbFront.set(-.20);
-    climbBack.set(-.20);
+    climbBack.set(steve);
   }
   
     public void climbdriveforward() {
       // Update motor speed to passed in value
-      climbDrive.set(.35);
+      climbDrive.set(.55);
     }
 
     public void climbdriveback() {
       // Update motor speed to passed in value
-      climbDrive.set(-.35);
+      climbDrive.set(-.55);
+    }
+
+    public void hardstop() {
+      climbFront.set(0);
+      climbBack.set(0);
+      climbDrive.set(0);
     }
 
     

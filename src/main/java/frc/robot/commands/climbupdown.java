@@ -13,8 +13,8 @@ import frc.robot.Robot;
 /**
  * An example command.  You can replace me with your own command.
  */
-public class climbdriveback extends Command {
-  public climbdriveback() {
+public class climbupdown extends Command {
+  public climbupdown() {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.one);
   }
@@ -27,7 +27,7 @@ public class climbdriveback extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.one.climbdriveback();
+    Robot.one.climbup(-.3);
   }
 
   // Make this return true when this Command no longer needs to run execute()

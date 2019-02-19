@@ -29,6 +29,8 @@ public class OI {
   public Button RunClimbDown = new JoystickButton(_game2, 1);
   public Button RunDriveFor = new JoystickButton(_game2, 4);
   public Button RunDriveBack = new JoystickButton(_game2, 2);
+  public Button UpFront = new JoystickButton(_game2, 5);
+  public Button UpBak = new JoystickButton(_game2, 6);
   
 
   public OI () {
@@ -38,6 +40,8 @@ public class OI {
     RunClimbDown.whileHeld(new climbdown());
     RunDriveFor.whileHeld(new climbdriveforward());
     RunDriveBack.whileHeld(new climbdriveback());
+    UpFront.whileHeld(new climbupdown());
+    UpBak.whileHeld(new climbbackup());
     
     
   }

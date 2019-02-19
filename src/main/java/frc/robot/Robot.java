@@ -16,7 +16,8 @@ import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
-
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.DemandType;
 import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.can.*;
 import frc.robot.subsystems.*; 
@@ -149,21 +150,24 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
     double forward = 1 * m_oi._gamepad.getY();
-        double turn = m_oi._gamepad.getTwist();
-        double liftup = m_oi._game2.getY();
-        double driveLift = m_oi._game2.getRawAxis(5);
-        forward = Deadband(forward);
-        turn = Deadband(turn);
+    double turn = m_oi._gamepad.getTwist();
+    double liftup = m_oi._game2.getY();
+    double driveLift = m_oi._game2.getRawAxis(5);
+    forward = Deadband(forward);
+    turn = Deadband(turn);
+    _leftMaster.set(ControlMode.PercentOutput, forward, DemandType.ArbitraryFeedForward, -turn*.55);
+    _rightMaster.set(ControlMode.PercentOutput, forward, DemandType.ArbitraryFeedForward, -turn*.55);
+    _drive.arcadeDrive(-forward, turn);
   }
 
 /** Deadband 5 percent, used on the gamepad */
 double Deadband(double value) {
   /* Upper deadband */
-  if (value >= +0.25) 
+  if (value >= +0.35) 
       return value;
   
   /* Lower deadband */
-  if (value <= -0.25)
+  if (value <= -0.35)
       return value;
   
   /* Outside deadband */
